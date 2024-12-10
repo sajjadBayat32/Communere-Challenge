@@ -68,6 +68,10 @@ export class SearchPageComponent implements OnInit, OnDestroy {
       nzFooter: null,
       nzContent: AddMedicationFormComponent,
       nzClosable: false,
+      nzOnOk: () => {
+        this.searchControl.setValue('', { emitEvent: false });
+        this.loadData();
+      },
     });
   }
 

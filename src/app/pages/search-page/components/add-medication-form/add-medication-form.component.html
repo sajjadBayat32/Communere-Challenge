@@ -7,7 +7,7 @@
 			[nzStatus]="controlIsInvalid('name') ? 'error' :''"
 		/>
 		@if (controlIsInvalid('name')) {
-		<div class="control-error">
+		<div class="control-error" @fadeInOut>
 			Name is required and must be at least 3 characters.
 		</div>
 		}
@@ -23,7 +23,9 @@
 				[nzStatus]="controlIsInvalid('dosage') ? 'error' :''"
 			></nz-input-number>
 			@if (controlIsInvalid('dosage')) {
-			<div class="control-error">Dosage is required and should be positive</div>
+			<div class="control-error" @fadeInOut>
+				Dosage is required and should be positive
+			</div>
 			}
 		</div>
 
@@ -38,7 +40,7 @@
 				}
 			</nz-select>
 			@if (controlIsInvalid('unit')) {
-			<div class="control-error">Unit is required.</div>
+			<div class="control-error" @fadeInOut>Unit is required.</div>
 			}
 		</div>
 	</div>
