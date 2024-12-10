@@ -9,8 +9,8 @@ import { ApiService } from './api.service';
 export class MedicationService {
   constructor(private apiService: ApiService) {}
 
-  getMedicationList(): Observable<Medication[]> {
-    return this.apiService.getMedicationList();
+  getMedicationList(searchTerm?: string): Observable<Medication[]> {
+    return this.apiService.getMedicationList(searchTerm);
   }
 
   addMedication(

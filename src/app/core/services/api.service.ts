@@ -5,13 +5,16 @@ import { delay, Observable, of } from 'rxjs';
 import { v4 as uuid } from 'uuid';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root',
 })
 export class ApiService {
   constructor(private dataStoreService: DataStoreService) {}
 
-  getMedicationList(): Observable<Medication[]> {
+  getMedicationList(searchTerm?: string): Observable<Medication[]> {
     let result = this.dataStoreService.getEntities<Medication>('Medication');
+    if (searchTerm) {
+      result = result.filter((item) => item.name.includes(searchTerm));
+    }
     return of(result).pipe(delay(1000));
   }
 

@@ -6,7 +6,12 @@
 	<div class="search-box-wrapper">
 		<div class="search-bar">
 			<nz-input-group [nzPrefix]="suffixIconSearch">
-				<input type="text" nz-input placeholder="search added medications" />
+				<input
+					nz-input
+					type="text"
+					[formControl]="searchControl"
+					placeholder="search added medications"
+				/>
 			</nz-input-group>
 			<ng-template #suffixIconSearch>
 				<span nz-icon nzType="search"></span>
@@ -28,7 +33,7 @@
 		[nzData]="medications"
 		[nzShowPagination]="false"
 		[nzScroll]="{x: '700px', y: '500px'}"
-		[nzLoading]="this.dataSubscription && !this.dataSubscription.closed"
+		[nzLoading]="subLoading('Data')"
 	>
 		<thead>
 			<tr>
