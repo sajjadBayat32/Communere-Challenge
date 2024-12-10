@@ -1,0 +1,33 @@
+.search-box-wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+}
+
+.search-box-wrapper .search-bar {
+	width: 400px;
+	max-width: 50%;
+}
+
+.search-box-wrapper .add-medication-btn {
+	position: absolute;
+	inset-inline-end: 0px;
+	top: 0px;
+}
+
+.page-container {
+	max-width: 1200px;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.header > h1 {
+	text-align: center;
+	font-size: 40px;
+	font-weight: normal;
+	margin: 16px 0;
+}
+
