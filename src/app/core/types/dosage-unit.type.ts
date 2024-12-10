@@ -6,4 +6,4 @@ export const DosageUnitList = [
   'Milligrams',
   'Micrograms',
 ] as const;
-export type DosageUnit = typeof DosageUnitList;
+export type DosageUnit = typeof DosageUnitList[number];
