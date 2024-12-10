@@ -1,1 +1,1 @@
-export { ApiService } from './api.service';
+export { MedicationService } from './medication.service';
