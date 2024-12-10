@@ -1,1 +1,95 @@
-<p>add-medication-form works!</p>
+<form [formGroup]="form" (ngSubmit)="submitForm()">
+	<div class="form-control form-control-box">
+		<input
+			nz-input
+			placeholder="Medication name"
+			formControlName="name"
+			[nzStatus]="controlIsInvalid('name') ? 'error' :''"
+		/>
+		@if (controlIsInvalid('name')) {
+		<div class="control-error">
+			Name is required and must be at least 3 characters.
+		</div>
+		}
+	</div>
+
+	<div class="form-control unit-dosage-box">
+		<div class="form-control-box width-full">
+			<nz-input-number
+				nzPlaceHolder="Dosage"
+				formControlName="dosage"
+				class="width-full"
+				[nzMin]="0"
+				[nzStep]="0.1"
+				[nzStatus]="controlIsInvalid('dosage') ? 'error' :''"
+			></nz-input-number>
+			@if (controlIsInvalid('dosage')) {
+			<div class="control-error">Dosage is required and should be positive</div>
+			}
+		</div>
+
+		<div class="form-control-box unit-box">
+			<nz-select
+				formControlName="unit"
+				nzPlaceHolder="Unit"
+				[nzStatus]="controlIsInvalid('unit') ? 'error' :''"
+			>
+				@for (unit of unitList; track unit) {
+				<nz-option [nzValue]="unit" [nzLabel]="unit"></nz-option>
+				}
+			</nz-select>
+			@if (controlIsInvalid('unit')) {
+			<div class="control-error">Unit is required.</div>
+			}
+		</div>
+	</div>
+
+	<div class="frequency-section">
+		<div class="frequency-box">
+			<div class="frequency-box-title">Frequency</div>
+			<label>Days</label>
+			<div class="days">
+				@for (day of weekDays; track day) {
+				<button
+					type="button"
+					class="day-button"
+					(click)="selectDay(day)"
+					[class.selected]="selectedDays.has(day)"
+				>
+					{{ day }}</button
+				>}
+			</div>
+
+			<label>Times</label>
+			<ul class="time-tags">
+				@for (time of addedTimes; track time) {
+				<li>{{ time }}</li>
+				}
+			</ul>
+			@if (addedTimes.length < 5) {
+			<div class="select-time-box">
+				<nz-time-picker
+					formControlName="time"
+					nzFormat="HH:mm"
+				></nz-time-picker>
+				<button type="button" nz-button nzType="default" (click)="addTime()">
+					+ Add time
+				</button>
+			</div>
+			}
+		</div>
+	</div>
+	<div class="actions">
+		<button type="button" nz-button nzType="default" (click)="onCancel()">
+			Cancel
+		</button>
+		<button
+			type="submit"
+			nz-button
+			nzType="primary"
+			[nzLoading]="subscription && !subscription.closed"
+		>
+			Add
+		</button>
+	</div>
+</form>
