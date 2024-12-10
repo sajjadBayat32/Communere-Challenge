@@ -1,1 +1,16 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+  /* font-family: "Balsamiq Sans", sans-serif; */
+}
+
+html,
+body {
+  color: #333;
+}
+
+.flex {
+  display: flex;
+}
+
+.width-full {
+  width: 100%;
+}

@@ -24,8 +24,10 @@
 
 	<nz-table
 		#table
-		[nzData]="medications"
 		class="medication-table"
+		[nzData]="medications"
+		[nzShowPagination]="false"
+		[nzScroll]="{x: '700px', y: '500px'}"
 		[nzLoading]="this.dataSubscription && !this.dataSubscription.closed"
 	>
 		<thead>

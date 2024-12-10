@@ -13,10 +13,19 @@ import { FrequencyPipe } from '../../core/pipe';
 @Component({
   selector: 'app-search-page',
   standalone: true,
-  imports: [NzTableModule, NzInputDirective, NzButtonComponent, NzModalModule, NzInputGroupComponent, NzIconDirective, DatePipe, FrequencyPipe],
+  imports: [
+    NzTableModule,
+    NzInputDirective,
+    NzButtonComponent,
+    NzModalModule,
+    NzInputGroupComponent,
+    NzIconDirective,
+    DatePipe,
+    FrequencyPipe,
+  ],
   templateUrl: './search-page.component.html',
   styleUrl: './search-page.component.css',
-  providers: [NzModalService]
+  providers: [NzModalService],
 })
 export class SearchPageComponent implements OnInit, OnDestroy {
   modalService = inject(NzModalService);
@@ -25,26 +34,27 @@ export class SearchPageComponent implements OnInit, OnDestroy {
   medications: Medication[] = [];
 
   ngOnInit(): void {
-      this.loadData();
+    this.loadData();
   }
 
   loadData() {
-    this.dataSubscription = this.medicationService.getMedicationList().subscribe((data) => {
-      this.medications = data;
-    })
+    this.dataSubscription = this.medicationService
+      .getMedicationList()
+      .subscribe((data) => {
+        this.medications = data;
+      });
   }
-
 
   openModal() {
     this.modalService.create({
-      nzTitle: "Add medication",
+      nzTitle: 'Add medication',
       nzFooter: null,
       nzContent: AddMedicationFormComponent,
       nzClosable: false,
-    })
+    });
   }
 
   ngOnDestroy(): void {
-      this.dataSubscription?.unsubscribe();
+    this.dataSubscription?.unsubscribe();
   }
 }
