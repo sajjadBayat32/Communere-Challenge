@@ -30,11 +30,7 @@
                 "output": "/assets/"
               }
             ],
-            "styles": [
-              "src/assets/styles/ant-theme.less",
-              "src/assets/styles/global.css",
-              "src/styles.css"
-            ],
+            "styles": ["src/assets/styles/ant-theme.less", "src/styles.css"],
             "scripts": []
           },
           "configurations": {
