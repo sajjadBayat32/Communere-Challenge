@@ -23,6 +23,7 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzModalRef } from 'ng-zorro-antd/modal';
 import { Subscription } from 'rxjs';
 import { trigger, transition, style, animate } from '@angular/animations';
+import { NzIconDirective } from 'ng-zorro-antd/icon';
 
 interface FormType {
   name: FormControl<string | null>;
@@ -39,6 +40,7 @@ interface FormType {
     ReactiveFormsModule,
     NzInputDirective,
     NzSelectModule,
+    NzIconDirective,
     NzInputNumberComponent,
     NzTimePickerModule,
     NzButtonComponent,

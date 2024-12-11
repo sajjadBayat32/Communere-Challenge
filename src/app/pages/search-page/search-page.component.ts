@@ -66,6 +66,7 @@ export class SearchPageComponent implements OnInit, OnDestroy {
     this.modalService.create({
       nzTitle: 'Add medication',
       nzFooter: null,
+      nzNoAnimation: true,
       nzContent: AddMedicationFormComponent,
       nzClosable: false,
       nzOnOk: () => {
